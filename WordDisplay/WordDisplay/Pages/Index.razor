@@ -1,0 +1,150 @@
+﻿@page "/"
+@using WordDisplay.Data;
+@using WordDisplay.Models;
+@using Newtonsoft.Json;
+@using System.Text;
+@using Microsoft.AspNetCore.SignalR.Client;
+@implements IAsyncDisposable
+
+@inject IHttpClientFactory clientFactory
+
+<div class="main">
+    <div class="header">
+        <h1 class="h1-main">Word Display!</h1>
+        <button class="btn-start" @onclick="Start">Start</button>
+
+        @if (!string.IsNullOrWhiteSpace(error))
+        {
+            <h4 class="h4-error">@error</h4>
+        }
+    </div>
+
+    <div class="content">
+        <table class="table table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Word</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var word in words)
+                {
+                    <tr>
+                        <td>@word</td>
+                        <td><button class="btn-remove" @onclick="()=>Remove(word)">Remove</button></td>
+                    </tr>
+                }
+                <tr>
+                    <td><input @bind="WordInput" placeholder="Enter word" size="50"></td>
+                    <td><button class="btn-add" @onclick="Add">Add</button></td>
+                </tr>
+            </tbody>
+
+        </table>
+
+        <table class="table table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th>CommandRunning</th>
+                    <th>CurrentWordSelected</th>
+                    <th>CommandTimeRemaining (s)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>@state.CommandRunning</td>
+                    <td>@state.CurrentWordSelected</td>
+                    <td>@state.CommandTimeRemaining</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+</div>
+
+@code
+{
+    private HubConnection hubConnection;
+    private string WordInput { get; set; }
+    private List<string> words = new List<string>();
+    private ServerState state { get; set; } = new ServerState();
+    public string error { get; set; }
+
+    /// <summary>
+    /// Create our HubConnection to connect to our ServerStateHub via SignalR, and register a handler to listen for changes.
+    /// </summary>
+    /// <returns></returns>
+    protected override async Task OnInitializedAsync()
+    {
+        hubConnection = new HubConnectionBuilder()
+            .WithUrl(new Uri("http://localhost:5555/state"))
+            .Build();
+        hubConnection.On<bool, string, int>("StateChanged", (commandRunning, currentWordSelected, commandTimeRemainining) =>
+        {
+            state.CommandRunning = commandRunning;
+            state.CurrentWordSelected = currentWordSelected;
+            state.CommandTimeRemaining = commandTimeRemainining;
+            Console.WriteLine("[StateChanged]: " + commandRunning + " " + currentWordSelected + " " + commandTimeRemainining);
+            StateHasChanged();
+        });
+        await hubConnection.StartAsync();
+    }
+
+    /// <summary>
+    /// Dispose the HubConnection.
+    /// </summary>
+    /// <returns></returns>
+    public async ValueTask DisposeAsync()
+    {
+        await hubConnection.DisposeAsync();
+    }
+
+    /// <summary>
+    /// Adds the value stored in WordInput into our list.
+    /// </summary>
+    private void Add()
+    {
+        if (string.IsNullOrWhiteSpace(WordInput))
+            return;
+        words.Add(WordInput);
+        WordInput = null;
+    }
+
+    /// <summary>
+    /// Removes the word from our list.
+    /// </summary>
+    /// <param name="word">The word to delete.</param>
+    private void Remove(string word)
+    {
+        words.Remove(word);
+    }
+
+    /// <summary>
+    /// Make a REST call to our API Server to invoke the StartCommand with our words.
+    /// </summary>
+    /// <returns></returns>
+    public async Task Start()
+    {
+        if (words.Count <= 0)
+        {
+            error = "Please enter at least one word before starting!";
+            return;
+        }
+        error = null;
+
+        Payload p = new Payload { Words = this.words };
+
+        var serialized = JsonConvert.SerializeObject(p, Formatting.Indented);
+        var content = new StringContent(serialized, Encoding.UTF8, "application/json");
+        var request = new HttpRequestMessage { RequestUri = new Uri("http://localhost:5555/api/word"), Method = HttpMethod.Post, Content = content };
+        Console.WriteLine("Sending: " + serialized);
+
+
+        var client = clientFactory.CreateClient();
+        HttpResponseMessage res = await client.SendAsync(request);
+
+        error = res.IsSuccessStatusCode ? null : "Something went wrong with start...";
+    }
+}

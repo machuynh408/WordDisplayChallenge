@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.808.4
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WordDisplay", "WordDisplay\WordDisplay.csproj", "{C77AC038-0EA0-4950-BEDB-6A8705F16873}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C77AC038-0EA0-4950-BEDB-6A8705F16873}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C77AC038-0EA0-4950-BEDB-6A8705F16873}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C77AC038-0EA0-4950-BEDB-6A8705F16873}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C77AC038-0EA0-4950-BEDB-6A8705F16873}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {39DAB460-D823-4FBC-A88B-4EBC25A81E42}
+	EndGlobalSection
+EndGlobal

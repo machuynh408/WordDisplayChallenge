@@ -1,0 +1,28 @@
+﻿<Properties StartupConfiguration="{5587DE73-DB01-4519-A745-1E9C7A149463}|Default">
+  <MonoDevelop.Ide.ItemProperties.WordDisplayServer PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="WordService.cs">
+    <Files>
+      <File FileName="Database/LoggingContext.cs" Line="21" Column="1" />
+      <File FileName="WordService.cs" Line="79" Column="77" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="WordDisplayServer" expanded="True">
+            <Node name="WordDisplayServer" expanded="True">
+              <Node name="Controllers" expanded="True" />
+              <Node name="Database" expanded="True" />
+              <Node name="WordService.cs" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
