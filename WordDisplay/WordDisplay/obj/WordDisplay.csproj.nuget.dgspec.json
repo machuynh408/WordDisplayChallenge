@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/machuynh/Desktop/WordDisplay/WordDisplay/WordDisplay.csproj": {}
+    "/Users/machuynh/Desktop/WordDisplayChallenge/WordDisplay/WordDisplay/WordDisplay.csproj": {}
   },
   "projects": {
-    "/Users/machuynh/Desktop/WordDisplay/WordDisplay/WordDisplay.csproj": {
+    "/Users/machuynh/Desktop/WordDisplayChallenge/WordDisplay/WordDisplay/WordDisplay.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/machuynh/Desktop/WordDisplay/WordDisplay/WordDisplay.csproj",
+        "projectUniqueName": "/Users/machuynh/Desktop/WordDisplayChallenge/WordDisplay/WordDisplay/WordDisplay.csproj",
         "projectName": "WordDisplay",
-        "projectPath": "/Users/machuynh/Desktop/WordDisplay/WordDisplay/WordDisplay.csproj",
+        "projectPath": "/Users/machuynh/Desktop/WordDisplayChallenge/WordDisplay/WordDisplay/WordDisplay.csproj",
         "packagesPath": "/Users/machuynh/.nuget/packages/",
-        "outputPath": "/Users/machuynh/Desktop/WordDisplay/WordDisplay/obj/",
+        "outputPath": "/Users/machuynh/Desktop/WordDisplayChallenge/WordDisplay/WordDisplay/obj/",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"

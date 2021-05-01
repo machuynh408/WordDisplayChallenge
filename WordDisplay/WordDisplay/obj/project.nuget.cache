@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "uVkQyVIYENE6Nkgu+WqQbwvzK+X/2LiFAE4/YzA+J4QCICKRp3wBwARGRW4IBr06iK0KCgz7Gehcjo67toZ+ng==",
+  "dgSpecHash": "ExLlmjMcms9ko+3LA4fq5eLm9B9Yhzq4bXuqGFMQnttKAZzWC07Vr4A5UEZMZg4Edq8xkISm7IcPV2/jdd5XmA==",
   "success": true,
-  "projectFilePath": "/Users/machuynh/Desktop/WordDisplay/WordDisplay/WordDisplay.csproj",
+  "projectFilePath": "/Users/machuynh/Desktop/WordDisplayChallenge/WordDisplay/WordDisplay/WordDisplay.csproj",
   "expectedPackageFiles": [
     "/Users/machuynh/.nuget/packages/microsoft.aspnetcore.connections.abstractions/5.0.5/microsoft.aspnetcore.connections.abstractions.5.0.5.nupkg.sha512",
     "/Users/machuynh/.nuget/packages/microsoft.aspnetcore.http.connections.client/5.0.5/microsoft.aspnetcore.http.connections.client.5.0.5.nupkg.sha512",
